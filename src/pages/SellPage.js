@@ -3,6 +3,7 @@ import { Col, Row } from 'reactstrap';
 import  ListingProducts  from '../components/ListingProducts';
 import { products } from '../const/const';
 
+
 const SellPage = ({props}) => {
     const [cart, setCart] = useState([]);
     const [lenCar, setLenCar] = useState(0);
@@ -12,28 +13,35 @@ const SellPage = ({props}) => {
 
     const numb = '+5353966388';
 
-    
-    const sendmsg = () => {
-        const rawMessage = `Compra de ${message} por un total de${total}`
-        const send = rawMessage.split(' ').join('%20;')  
-        return `https://api.whatsapp.com/send?phone=${numb}&text=%20${send}`
-    }
-    
 
-
-    const addCart = (item) => {
+    const addCart = (item, setOrder, order) => {
         let newArr = cart;
-        console.log(cart)
-        newArr.push(item);
-        setLenCar(lenCar+1)
-        setTotal(total+item.price)
-        let newms = message.concat(`${item.name} por ${item.price} `)
-        setMessage(newms)
-        const rawMessage = `Compra de ${newms} por un total de${total}`;
+        setOrder(order+1);
+        console.log(cart);
+        setLenCar(lenCar+1);
+        let newTotal = total+item.price;
+        setTotal(newTotal);
+        let newms = message.concat(`${item.name} por ${item.price} `);
+        setMessage(newms);
+        const rawMessage = `Compra de ${newms} por un total de${newTotal}`;
         const send = rawMessage.split(' ').join('%20');
-        setUrl(`https://api.whatsapp.com/send?phone=${numb}&text=%20${send}`)
-        console.log(send)
+        setUrl(`https://api.whatsapp.com/send?phone=${numb}&text=%20${send}`);
+        console.log(send);
+        newArr.push({'item':item , 'order': order});
         setCart(newArr);
+   }
+
+   const buildMsg = () => {
+       let newMsg = 'Compra de '
+       cart.forEach(element => {
+           if (element.order > 0){
+            newMsg = newMsg
+                .concat(`${element.order} ${element.item.name} por ${element.item.price*element.order} `)
+           }
+        });
+       newMsg = newMsg.concat(`por un total de ${total}`)
+       console.log(newMsg)
+       return `https://api.whatsapp.com/send?phone=${numb}&text=%20${newMsg}`
    }
    
     return (
@@ -49,7 +57,7 @@ const SellPage = ({props}) => {
                     {total}
                 </Col>
             </Row>
-            <a href={url} target="_blank" rel="noreferrer noopener">comprar</a>
+            <a href={buildMsg()} target="_blank" rel="noreferrer noopener">comprar</a>
             <ListingProducts
                 items={products}
                 addCart={addCart}

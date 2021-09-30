@@ -1,15 +1,16 @@
 import React from 'react'
+import { useState } from 'react/cjs/react.development'
 import { Card, Row, Col, Button } from 'reactstrap'
 
 const Product = ({
     item,
     addCart,
 }) => {
-    
+    const [order, setOrder] = useState(0);
 
     return (
         <div>
-            <Card>
+            <Card className="mt-2">
                 <Row>
                     <Col>
                         {item.name}
@@ -18,7 +19,10 @@ const Product = ({
                         {item.price}
                     </Col> 
                     <Col>
-                        <Button onClick={() => addCart(item)}>Add Cart</Button>
+                        <Button onClick={() => addCart(item, setOrder, order)}>Add Cart</Button>
+                    </Col>
+                    <Col>
+                        {order}
                     </Col>
                 </Row>
             </Card>
