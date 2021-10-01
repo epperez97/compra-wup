@@ -4,6 +4,7 @@ import  Product  from './Product';
 const ListingProducts = ({
     items,
     addCart,
+    removeCart,
 }) => {
     return (
         <div>
@@ -14,6 +15,7 @@ const ListingProducts = ({
                         key={item.id}
                         item={item}
                         addCart={addCart}
+                        removeCart={removeCart}
                     />        
                     );
                 }

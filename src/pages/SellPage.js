@@ -8,11 +8,19 @@ const SellPage = ({props}) => {
     const [cart, setCart] = useState([]);
     const [lenCar, setLenCar] = useState(0);
     const [total, setTotal] = useState(0);
-    const [message, setMessage] = useState('');
-    const [url, setUrl] = useState('');
 
     const numb = '+5353966388';
 
+    const removeCart = (item, setOrder, order) => {
+        let newArr = cart;
+        if(order > 0){
+            setOrder(order-1);
+            setLenCar(lenCar-1);
+            setTotal(total-item.price);
+            newArr = cart.splice(cart.indexOf(item),1);
+            setCart(newArr);
+        }
+    }
 
     const addCart = (item, setOrder, order) => {
         let newArr = cart;
@@ -21,12 +29,6 @@ const SellPage = ({props}) => {
         setLenCar(lenCar+1);
         let newTotal = total+item.price;
         setTotal(newTotal);
-        let newms = message.concat(`${item.name} por ${item.price} `);
-        setMessage(newms);
-        const rawMessage = `Compra de ${newms} por un total de${newTotal}`;
-        const send = rawMessage.split(' ').join('%20');
-        setUrl(`https://api.whatsapp.com/send?phone=${numb}&text=%20${send}`);
-        console.log(send);
         newArr.push({'item':item , 'order': order});
         setCart(newArr);
    }
@@ -61,6 +63,7 @@ const SellPage = ({props}) => {
             <ListingProducts
                 items={products}
                 addCart={addCart}
+                removeCart={removeCart}
             />
         </div>
     )
