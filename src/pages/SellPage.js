@@ -51,15 +51,6 @@ const SellPage = ({props}) => {
         <div>
             <Header lenCar={lenCar} total={total} buildMsg={buildMsg}/>
             <Row className="mt-3">
-                <Col>
-                    <h1>Productos del Carrito</h1>
-                </Col>
-                <Col>
-                    {lenCar}
-                </Col>
-                <Col>
-                    {total}
-                </Col>
             </Row>
             <div>
                 <ListingProducts

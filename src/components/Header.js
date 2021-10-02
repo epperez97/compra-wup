@@ -7,16 +7,15 @@ import '../assets/styles/badge.css'
 const Header = ({total, lenCar, buildMsg}) => {
     return (
         <div>
-            <Navbar color="success">
-                <Nav >
-                    <NavItem>
-                        <NavLink disable="true">Precio</NavLink>
+            <Navbar className="navbar fixed-top cart" color="primary">
+                    <NavItem className="px-10">
+                        <h3 disable="true">Precio</h3>
                     </NavItem>
                     <NavItem>
-                        <NavLink disable="true">{total}</NavLink>
+                        <h3 >{total}</h3>
                     </NavItem>
-                    <NavItem >
-                        <a href={buildMsg()} target="_blank" rel="noreferrer noopener">
+                    <NavItem className="mar">
+                        <a  href={buildMsg()} target="_blank" rel="noreferrer noopener">
                              <FontAwesomeIcon 
                                 icon={faShoppingCart} 
                                 size="3x"
@@ -30,7 +29,6 @@ const Header = ({total, lenCar, buildMsg}) => {
                             </span>
                         </a>
                     </NavItem>
-                </Nav>
             </Navbar>
         </div>
     )
