@@ -11,7 +11,7 @@ export const products = [
         'id': 2,
         'name': 'product2',
         'price': 12.50,
-        'image': foto2
+        'image': foto1
     },
     {
         'id': 3,
@@ -23,5 +23,5 @@ export const products = [
         'id': 4,
         'name': 'product4',
         'price': 12.50,
-        'image': foto2
+        'image': foto1
     }]

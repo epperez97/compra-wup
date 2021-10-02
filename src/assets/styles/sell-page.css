@@ -1,0 +1,7 @@
+.listing-elements {
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    margin-top: 50px;
+}

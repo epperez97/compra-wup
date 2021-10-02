@@ -1,5 +1,6 @@
 import React from 'react'
 import  Product  from './Product';
+import '../assets/styles/sell-page.css';
 
 const ListingProducts = ({
     items,
@@ -7,7 +8,7 @@ const ListingProducts = ({
     removeCart,
 }) => {
     return (
-        <div>
+        <div className="listing-elements">
             {items.map((item) => {
                     console.log(item);
                     return(                 

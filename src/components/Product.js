@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react/cjs/react.development'
 import { Card, Row, Col, Button, CardImg, CardBody, CardSubtitle } from 'reactstrap'
 
+
 const Product = ({
     item,
     addCart,
@@ -13,7 +14,7 @@ const Product = ({
     return (
         <Col sm="6" lg="4" xl="3" className="mb-3">
                 <Card>
-                    <div className="position-relative"> 
+                    <div> 
                         <CardImg top alt={item.name} src={item.image} />
                     </div>
                     <CardBody>
