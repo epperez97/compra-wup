@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Col, Row } from 'reactstrap';
 import  ListingProducts  from '../components/ListingProducts';
 import { products } from '../const/const';
+import Header from '../components/Header';
 
 
 const SellPage = ({props}) => {
@@ -48,7 +49,8 @@ const SellPage = ({props}) => {
    
     return (
         <div>
-            <Row>
+            <Header lenCar={lenCar} total={total} buildMsg={buildMsg}/>
+            <Row className="mt-3">
                 <Col>
                     <h1>Productos del Carrito</h1>
                 </Col>
@@ -59,12 +61,13 @@ const SellPage = ({props}) => {
                     {total}
                 </Col>
             </Row>
-            <a href={buildMsg()} target="_blank" rel="noreferrer noopener">comprar</a>
-            <ListingProducts
-                items={products}
-                addCart={addCart}
-                removeCart={removeCart}
-            />
+            <div>
+                <ListingProducts
+                    items={products}
+                    addCart={addCart}
+                    removeCart={removeCart}
+                />
+            </div>
         </div>
     )
 }
