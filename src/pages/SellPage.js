@@ -3,6 +3,7 @@ import { Col, Row } from 'reactstrap';
 import  ListingProducts  from '../components/ListingProducts';
 import { products } from '../const/const';
 import Header from '../components/Header';
+import Intro from '../components/Intro';
 
 
 const SellPage = ({props}) => {
@@ -51,6 +52,7 @@ const SellPage = ({props}) => {
         <div>
             <Header lenCar={lenCar} total={total} buildMsg={buildMsg}/>
             <Row className="mt-3">
+                <Intro />
             </Row>
             <div>
                 <ListingProducts
